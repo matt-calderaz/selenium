@@ -189,7 +189,9 @@ class WebDriver(RemoteWebDriver):
             # Happens if Firefox shutsdown before we've read the response from
             # the socket.
             pass
-
+        finally:
+            self.binary.kill()
+        
         if self.w3c:
             self.service.stop()
         else:
